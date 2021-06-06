@@ -17,7 +17,6 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 		if (req.query.image_url) {
 			filterImageFromURL(req.query.image_url)
 				.then((response) => {
-					console.log("response", response);
 					return res.sendFile(response, (err) => {
 						if (!err) {
 							deleteLocalFiles([response]);
@@ -25,7 +24,6 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 					});
 				})
 				.catch((error) => {
-					console.log("error", error);
 					return res.status(500).send("Error!");
 				});
 		} else {
